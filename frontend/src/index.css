@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans bg-paper text-ink text-[15px] leading-[1.75];
+  }
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+}
+
+:root {
+  --ink: #1a1814;
+  --ink-muted: #5c5850;
+  --ink-faint: #9b978e;
+  --paper: #faf9f6;
+  --paper-warm: #f4f1ea;
+  --paper-card: #ffffff;
+  --rule: #e8e4da;
+  --rule-strong: #ccc8be;
+
+  --accent: #2c4a8a;
+  --accent-light: #edf1fa;
+  --accent-muted: #6b87c0;
+
+  --danger: #c0392b;
+  --danger-light: #fdf0ee;
+  --warn: #b07d2a;
+  --warn-light: #fdf6e8;
+  --success: #2a7a52;
+  --success-light: #edf7f2;
+
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --mono: 'DM Mono', 'Fira Code', monospace;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.shimmer {
+  animation: shimmer 1.5s infinite;
+}
