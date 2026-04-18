@@ -1,4 +1,5 @@
 import time
+import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from backend.models import SearchRequest, SearchResponse, StatsResponse, HealthResponse, SearchResult
@@ -6,6 +7,10 @@ from backend.vectordb import vectordb, COLLECTION_NAME
 from backend.embedder import embedder
 from backend.actian_vectorai import FilterBuilder, Field, reciprocal_rank_fusion
 from contextlib import asynccontextmanager
+
+# Load environment variables
+from dotenv import load_dotenv
+load_dotenv()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -23,9 +28,12 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="LexMatch API", lifespan=lifespan)
 
+# CORS Configuration
+allowed_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:5173,http://localhost:5174,http://localhost:5175").split(",")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
