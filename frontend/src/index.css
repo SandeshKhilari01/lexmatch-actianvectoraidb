@@ -1,6 +1,45 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #1a1814;
+  --color-ink-muted: #5c5850;
+  --color-ink-faint: #9b978e;
+  --color-paper: #faf9f6;
+  --color-paper-warm: #f4f1ea;
+  --color-paper-card: #ffffff;
+  --color-rule: #e8e4da;
+  --color-rule-strong: #ccc8be;
+
+  --color-accent: #2c4a8a;
+  --color-accent-light: #edf1fa;
+  --color-accent-muted: #6b87c0;
+
+  --color-danger: #c0392b;
+  --color-danger-light: #fdf0ee;
+  --color-warn: #b07d2a;
+  --color-warn-light: #fdf6e8;
+  --color-success: #2a7a52;
+  --color-success-light: #edf7f2;
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-mono: "DM Mono", "Fira Code", monospace;
+
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+}
 
 @layer base {
   body {
@@ -9,32 +48,6 @@
   h1, h2, h3, h4 {
     @apply font-serif;
   }
-}
-
-:root {
-  --ink: #1a1814;
-  --ink-muted: #5c5850;
-  --ink-faint: #9b978e;
-  --paper: #faf9f6;
-  --paper-warm: #f4f1ea;
-  --paper-card: #ffffff;
-  --rule: #e8e4da;
-  --rule-strong: #ccc8be;
-
-  --accent: #2c4a8a;
-  --accent-light: #edf1fa;
-  --accent-muted: #6b87c0;
-
-  --danger: #c0392b;
-  --danger-light: #fdf0ee;
-  --warn: #b07d2a;
-  --warn-light: #fdf6e8;
-  --success: #2a7a52;
-  --success-light: #edf7f2;
-
-  --serif: 'Playfair Display', Georgia, serif;
-  --sans: 'DM Sans', system-ui, sans-serif;
-  --mono: 'DM Mono', 'Fira Code', monospace;
 }
 
 @keyframes shimmer {
