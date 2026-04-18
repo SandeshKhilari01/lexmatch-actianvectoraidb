@@ -61,3 +61,10 @@ data/*
 lexmatch_prd.xml
 lexmatch_product_design_document.html
 PROJECT_RULES.md
+PITCH_DECK.md
+DEMO_CLAUSES.md
+
+# Logs and outputs
+*_nohup.log
+nohup.out
+vite.log
