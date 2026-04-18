@@ -88,34 +88,38 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <header className="bg-ink text-white py-4 px-8 flex justify-between items-center shadow-lg">
+      <header className="sticky top-0 z-50 glass border-b border-rule/50 py-4 px-8 flex justify-between items-center shadow-sm">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-accent rounded-md flex items-center justify-center">
-            <Search size={18} className="text-white" />
+          <div className="w-10 h-10 gradient-brand rounded-xl flex items-center justify-center shadow-premium transform hover:rotate-6 transition-transform">
+            <Activity size={22} className="text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-bold tracking-tight">LexMatch</h1>
-            <p className="text-[10px] text-white/40 font-mono tracking-widest uppercase">
+            <h1 className="text-2xl font-bold tracking-tight font-serif text-ink leading-none">
+              LexMatch
+            </h1>
+            <p className="text-[10px] text-ink-faint font-mono tracking-widest uppercase mt-1">
               AI-Powered Legal Clause Search
             </p>
           </div>
         </div>
         <div className="flex items-center gap-6">
-          <div className="hidden md:flex items-center gap-2">
-            <Database size={14} className="text-accent-muted" />
-            <span className="text-[11px] font-mono text-white/60">Actian VectorAI DB</span>
+          <div className="hidden md:flex items-center gap-4">
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-paper-warm rounded-full border border-rule">
+              <Database size={14} className="text-accent" />
+              <span className="text-[11px] font-mono text-ink-muted">Actian VectorAI</span>
+            </div>
           </div>
-          <div className="w-px h-4 bg-white/10 hidden md:block" />
+          <div className="w-px h-6 bg-rule hidden md:block" />
           <div className="flex items-center gap-2">
-            <div className={`w-2 h-2 rounded-full ${dbStatus === 'connected' ? 'bg-success' : 'bg-danger'}`} />
-            <span className="text-[11px] font-mono text-white/80">{dbStatus.toUpperCase()}</span>
+            <div className={`w-2.5 h-2.5 rounded-full shadow-sm ${dbStatus === 'connected' ? 'bg-success animate-pulse' : 'bg-danger'}`} />
+            <span className="text-[11px] font-mono font-bold text-ink-muted">{dbStatus.toUpperCase()}</span>
           </div>
         </div>
       </header>
 
       <main className="flex-1 flex flex-col md:flex-row bg-paper">
         {/* Sidebar Controls */}
-        <aside className="w-full md:w-[320px] p-6 border-r border-rule bg-paper-warm overflow-y-auto">
+        <aside className="w-full md:w-[420px] p-6 border-r border-rule bg-paper-warm overflow-y-auto">
           <div className="sticky top-6">
             <ClauseInput 
               value={query} 

@@ -30,32 +30,46 @@ const ResultCard = ({ result, onViewDiff }) => {
   };
 
   const scorePercentage = Math.round(result.score * 100);
+  const isGoldStandard = scorePercentage >= 95;
 
   return (
-    <div className="bg-white border border-rule rounded-lg p-5 mb-6 transition-all hover:shadow-sm">
-      <div className="flex justify-between items-start mb-4">
+    <div className={`
+      bg-white border rounded-xl p-6 mb-6 transition-all duration-300
+      ${isGoldStandard 
+        ? 'border-gold shadow-gold ring-1 ring-gold/20 bg-gold-light' 
+        : 'border-rule shadow-premium hover:border-accent/30'}
+    `}>
+      <div className="flex justify-between items-start mb-5">
         <div className="flex gap-2 items-center flex-wrap">
-          <span className={`badge px-2 py-0.5 rounded-sm border text-[11px] font-mono font-medium tracking-wide uppercase ${getRiskBadgeStyles(result.risk_level)}`}>
+          {isGoldStandard && (
+            <span className="badge gradient-gold text-white px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase shadow-sm flex items-center gap-1">
+              <ShieldAlert size={12} /> Gold Standard
+            </span>
+          )}
+          <span className={`badge px-2.5 py-1 rounded-md border text-[10px] font-bold tracking-wider uppercase ${getRiskBadgeStyles(result.risk_level)}`}>
             {result.risk_level} RISK
           </span>
-          <span className="badge bg-accent-light text-accent px-2 py-0.5 rounded-sm text-[11px] font-medium tracking-wide uppercase">
+          <span className="badge bg-accent-light text-accent px-2.5 py-1 rounded-md text-[10px] font-bold tracking-wider uppercase">
             {result.clause_type}
           </span>
-          <span className="text-[11px] text-ink-faint font-mono">
+          <span className="text-[11px] text-ink-faint font-mono bg-paper-warm px-2 py-0.5 rounded">
             {result.source_contract}
           </span>
         </div>
         <div className="flex flex-col items-end">
-          <span className={`font-mono text-base font-medium ${getScoreColor(result.score)}`}>
-            {scorePercentage}%
-          </span>
+          <div className="flex items-center gap-2">
+            <span className={`font-mono text-lg font-bold ${getScoreColor(result.score)}`}>
+              {scorePercentage}%
+            </span>
+            <span className="text-[10px] text-ink-faint font-mono uppercase tracking-tighter">Confidence</span>
+          </div>
         </div>
       </div>
 
-      <div className="mb-4">
-        <div className="h-1 bg-rule rounded-full overflow-hidden">
+      <div className="mb-6">
+        <div className="h-1.5 bg-rule/50 rounded-full overflow-hidden">
           <div 
-            className={`h-full rounded-full transition-all duration-1000 ${getScoreBg(result.score)}`}
+            className={`h-full rounded-full transition-all duration-1000 ease-out ${getScoreBg(result.score)}`}
             style={{ width: `${scorePercentage}%` }}
           />
         </div>
